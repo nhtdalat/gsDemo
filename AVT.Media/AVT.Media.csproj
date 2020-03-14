@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{303C46BC-028E-4E41-9A15-0C932C957715}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AVT.Media</RootNamespace>
+    <AssemblyName>AVT.Media</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime, Version=2.4.7.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.2.4.7\lib\net45\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Credentials.cs" />
+    <Compile Include="Common\MimeType.cs" />
+    <Compile Include="Common\NtpTime.cs" />
+    <Compile Include="Metadata\Api\IMetadataStream.cs" />
+    <Compile Include="Metadata\Api\IMetadataStreamManager.cs" />
+    <Compile Include="Metadata\Api\IPipelineFactory.cs" />
+    <Compile Include="Metadata\MetadataStreamBase.cs" />
+    <Compile Include="Metadata\MetadataStreamManagerBase.cs" />
+    <Compile Include="Metadata\PlayerConfiguration.cs" />
+    <Compile Include="Metadata\PlayerInitializationException.cs" />
+    <Compile Include="Metadata\PlayingState.cs" />
+    <Compile Include="Metadata\SynchronizedObject.cs" />
+    <Compile Include="Metadata\VxMetadataPlayer.cs" />
+    <Compile Include="Metadata\VxMetadataSource.cs" />
+    <Compile Include="Pipeline\BufferToObjectTypeTransformBase.cs" />
+    <Compile Include="Pipeline\ByteBuffer.cs" />
+    <Compile Include="Pipeline\EndOfBufferException.cs" />
+    <Compile Include="Pipeline\IObjectTypeSink.cs" />
+    <Compile Include="Pipeline\ISink.cs" />
+    <Compile Include="Pipeline\ISource.cs" />
+    <Compile Include="Pipeline\ITransform.cs" />
+    <Compile Include="Pipeline\MediaEvent.cs" />
+    <Compile Include="Pipeline\MediaPipeline.cs" />
+    <Compile Include="Pipeline\ObjectTypeSinkBase.cs" />
+    <Compile Include="Pipeline\ObjectTypeSource.cs" />
+    <Compile Include="Pipeline\ObjectTypeToBufferTransformBase.cs" />
+    <Compile Include="Pipeline\ObjectTypeTransformBase.cs" />
+    <Compile Include="Pipeline\SinkBase.cs" />
+    <Compile Include="Pipeline\Sinks\TcpInterleavedSink.cs" />
+    <Compile Include="Pipeline\Sinks\TeeSink.cs" />
+    <Compile Include="Pipeline\Sinks\UdpSink.cs" />
+    <Compile Include="Pipeline\SourceBase.cs" />
+    <Compile Include="Pipeline\TransformBase.cs" />
+    <Compile Include="Pipeline\Transforms\AlwaysFalseDemarcator.cs" />
+    <Compile Include="Pipeline\Transforms\BufferToRtpPacketTransform.cs" />
+    <Compile Include="Pipeline\Transforms\IRtpDemarcator.cs" />
+    <Compile Include="Pipeline\Transforms\MarkerDemarcator.cs" />
+    <Compile Include="Pipeline\Transforms\RtpDepacketizer.cs" />
+    <Compile Include="Pipeline\Transforms\RtpPacketizer.cs" />
+    <Compile Include="Pipeline\Transforms\RtpPayloadTransform.cs" />
+    <Compile Include="Pipeline\Transforms\SsrcFilter.cs" />
+    <Compile Include="Pipeline\Transforms\TimestampDemarcator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RTP\DefaultRtpClock.cs" />
+    <Compile Include="RTP\IRtpClock.cs" />
+    <Compile Include="RTP\IRtpSource.cs" />
+    <Compile Include="RTP\OnvifRtpHeader.cs" />
+    <Compile Include="RTP\RtpInterleavedSource.cs" />
+    <Compile Include="RTP\RtpPacket.cs" />
+    <Compile Include="RTP\RtpSession.cs" />
+    <Compile Include="RTP\RtpTimestamp.cs" />
+    <Compile Include="RTP\RtpUdpSource.cs" />
+    <Compile Include="RTP\RtpVersion.cs" />
+    <Compile Include="RTSP\Client\AuthChallenge.cs" />
+    <Compile Include="RTSP\Client\BasicAuthChallengeResponse.cs" />
+    <Compile Include="RTSP\Client\ChallengeResponse.cs" />
+    <Compile Include="RTSP\Client\DigestAuthChallengeResponse.cs" />
+    <Compile Include="RTSP\Client\IRtspInvoker.cs" />
+    <Compile Include="RTSP\Client\MediaTrack.cs" />
+    <Compile Include="RTSP\Client\MediaTracks.cs" />
+    <Compile Include="RTSP\Client\RtspClient.cs" />
+    <Compile Include="RTSP\Client\RtspClientException.cs" />
+    <Compile Include="RTSP\InterleavedData.cs" />
+    <Compile Include="RTSP\IRtspConnection.cs" />
+    <Compile Include="RTSP\PlaybackBufferStateEvent.cs" />
+    <Compile Include="RTSP\RequestContext.cs" />
+    <Compile Include="RTSP\RtpInterleavedMediaSource.cs" />
+    <Compile Include="RTSP\RtspChunk.cs" />
+    <Compile Include="RTSP\RtspConnection.cs" />
+    <Compile Include="RTSP\RtspException.cs" />
+    <Compile Include="RTSP\RtspHeaders.cs" />
+    <Compile Include="RTSP\RtspListener.cs" />
+    <Compile Include="RTSP\RtspMessage.cs" />
+    <Compile Include="RTSP\RtspMessageDecoder.cs" />
+    <Compile Include="RTSP\RtspMessageEventArgs.cs" />
+    <Compile Include="RTSP\RtspMessageParseException.cs" />
+    <Compile Include="RTSP\RtspRequest.cs" />
+    <Compile Include="RTSP\RtspResponse.cs" />
+    <Compile Include="RTSP\RtspVersion.cs" />
+    <Compile Include="RTSP\SDP\Attribute.cs" />
+    <Compile Include="RTSP\SDP\BandwidthInfo.cs" />
+    <Compile Include="RTSP\SDP\ConnectionInfo.cs" />
+    <Compile Include="RTSP\SDP\MediaDescription.cs" />
+    <Compile Include="RTSP\SDP\ParseUtils.cs" />
+    <Compile Include="RTSP\SDP\RepeatTime.cs" />
+    <Compile Include="RTSP\SDP\SdpParseException.cs" />
+    <Compile Include="RTSP\SDP\SdpRtpMap.cs" />
+    <Compile Include="RTSP\SDP\SessionDescription.cs" />
+    <Compile Include="RTSP\SDP\SessionOriginator.cs" />
+    <Compile Include="RTSP\SDP\TimeDescription.cs" />
+    <Compile Include="RTSP\SDP\TimeZone.cs" />
+    <Compile Include="RTSP\Server\DefaultRequestDispatcher.cs" />
+    <Compile Include="RTSP\Server\DefaultRequestHandler.cs" />
+    <Compile Include="RTSP\Server\IRequestDispatcher.cs" />
+    <Compile Include="RTSP\Server\IRequestHandler.cs" />
+    <Compile Include="RTSP\Server\IRtspSession.cs" />
+    <Compile Include="RTSP\Server\IRtspSessionManager.cs" />
+    <Compile Include="RTSP\Server\RequestHandlerBase.cs" />
+    <Compile Include="RTSP\Server\RtspServer.cs" />
+    <Compile Include="RTSP\Server\RtspSessionBase.cs" />
+    <Compile Include="RTSP\Server\RtspSessionManager.cs" />
+    <Compile Include="RTSP\Session.cs" />
+    <Compile Include="RTSP\TransportHeader.cs" />
+    <Compile Include="RTSP\TransportType.cs" />
+    <Compile Include="RTSP\Utils\HeaderValueDecoder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
